@@ -1,0 +1,47 @@
+html,
+body {
+  background-color: $black;
+  font-family: 'ZCOOL QingKe HuangYou';
+  margin: 0;
+  overscroll-behavior: none;
+  padding: 0;
+}
+
+.title {
+  align-items: baseline;
+  background-color: lighten($darkblue, 10%);
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem;
+
+  h1,
+  p {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 16pt;
+  }
+}
+
+.game-selector {
+  background-color: $darkblue;
+  padding: .5rem;
+
+  .select {
+    align-items: center;
+    color: $white;
+    display: flex;
+  }
+
+  .select-icon {
+    fill: $white;
+  }
+}
+
+.game-svg {
+  height: 36px;
+  padding-right: .5rem;
+  width: 36px;
+}

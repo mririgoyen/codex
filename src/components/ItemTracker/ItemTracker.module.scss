@@ -1,0 +1,46 @@
+.grid {
+  align-items: center;
+  display: flex;
+  padding: 1rem .75rem;
+  user-select: none;
+}
+
+.item {
+  height: 100%;
+  max: {
+    height: 64px;
+    width: 64px;
+  }
+  padding: 0 .25rem;
+  position: relative;
+  width: 100%;
+}
+
+.item-image {
+  max-height: 64px;
+}
+
+.greyscale {
+  filter: grayscale(100%);
+  opacity: .5;
+}
+
+.item-checked {
+  fill: $green;
+  paint-order: stroke;
+  position: absolute;
+  right: 0;
+  stroke: $black;
+  stroke-width: 4px;
+  top: 0;
+  width: 1.5rem;
+}
+
+.item-level {
+  bottom: 0;
+  color: $white;
+  font-size: 1.5rem;
+  position: absolute;
+  right: .5rem;
+  text-shadow: -3px -3px 0 $black, 3px -3px 0 $black, -3px 3px 0 $black, 3px 3px 0 $black;
+}
