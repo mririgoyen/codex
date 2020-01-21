@@ -1,8 +1,17 @@
 {
   "name": "untitled-item-tracker",
   "version": "0.1.0-beta",
+  "description": "A cross-platform randomizer item tracker built on React and Electron.",
   "author": "Michael Irigoyen <goyney@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/goyney/untitled-item-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goyney/untitled-item-tracker/issues"
+  },
+  "homepage": "https://github.com/goyney/untitled-item-tracker#readme",
   "scripts": {
     "build": "NODE_ENV=production webpack --config src/webpack/prod.webpack.config.js",
     "develop": "webpack-dev-server --config src/webpack/dev.webpack.config.js --progress"
