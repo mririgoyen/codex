@@ -27,12 +27,13 @@ body {
 
 .game-selector {
   background-color: $darkblue;
-  padding: .5rem;
+  padding: 0 .5rem;
 
   .select {
     align-items: center;
     color: $white;
     display: flex;
+    padding: 0;
   }
 
   .select-icon {
@@ -41,7 +42,7 @@ body {
 }
 
 .game-svg {
-  height: 36px;
+  height: 32px;
   padding-right: .5rem;
-  width: 36px;
+  width: 32px;
 }
