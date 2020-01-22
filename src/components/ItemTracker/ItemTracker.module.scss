@@ -1,6 +1,7 @@
 .grid {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   padding: 1rem .75rem;
   user-select: none;
 }
@@ -16,13 +17,11 @@
   width: 100%;
 }
 
-.item-image {
-  max-height: 64px;
-}
-
 .greyscale {
-  filter: grayscale(100%);
-  opacity: .5;
+  & > :not(.modifiers) {
+    filter: grayscale(100%);
+    opacity: .5;
+  }
 }
 
 .item-checked {
@@ -36,11 +35,21 @@
   width: 1.5rem;
 }
 
-.item-level {
-  bottom: 0;
+.item-level,
+.item-step {
   color: $white;
   font-size: 1.5rem;
+  pointer-events: none;
   position: absolute;
+  text-shadow: -2px -2px 0 $black, 0 -2px 0 $black, 2px -2px 0 $black, 2px 0 0 $black, 2px 2px 0 $black, 0 2px 0 $black, -2px 2px 0 $black, -2px 0 0 $black;
+}
+
+.item-step {
+  left: .5rem;
+  top: 0;
+}
+
+.item-level {
+  bottom: 0;
   right: .5rem;
-  text-shadow: -3px -3px 0 $black, 3px -3px 0 $black, -3px 3px 0 $black, 3px 3px 0 $black;
 }

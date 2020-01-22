@@ -1,7 +1,48 @@
-.boomerang {
+.boomerang,
+.magical-boomerang {
   max-width: 32px;
+  overflow: hidden;
 
   svg {
-    max-height: 48px;
+    margin-left: -32px;
+    padding-left: 16px;
   }
+}
+
+.boomerang {
+  padding-right: 0;
+}
+
+.magical-boomerang {
+  padding-left: 0;
+}
+
+.agahnim-one,
+.agahnim-two {
+  max-width: 32px;
+  overflow: hidden;
+}
+
+.agahnim-one {
+  padding-right: 0;
+
+  svg {
+    margin-right: -32px;
+  }
+}
+
+.agahnim-two {
+  padding-left: 0;
+
+  svg {
+    margin-left: -32px;
+  }
+}
+
+.ped-seed {
+  fill: $red;
+  left: 0;
+  margin: 6px auto;
+  position: absolute;
+  right: 0;
 }
