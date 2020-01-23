@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Icon from '@mdi/react';
+import { mdiBookOpenVariant } from '@mdi/js';
 
 import pkg from '../../../package.json';
 
@@ -25,7 +27,7 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.title}>
-        <h1>Untitled Item Tracker</h1>
+        <h1><Icon path={mdiBookOpenVariant} size={1} />Codex</h1>
         <p>v{pkg.version}</p>
       </div>
       <div className={classes.gameSelector}>

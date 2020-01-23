@@ -8,7 +8,7 @@ body {
 }
 
 .title {
-  align-items: baseline;
+  align-items: center;
   background-color: lighten($darkblue, 10%);
   color: $white;
   display: flex;
@@ -21,7 +21,15 @@ body {
   }
 
   h1 {
+    align-items: center;
+    display: flex;
     font-size: 16pt;
+
+    svg {
+      fill: $white;
+      opacity: .7;
+      padding-right: .3rem;
+    }
   }
 }
 
