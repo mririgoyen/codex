@@ -1,7 +1,7 @@
 {
   "name": "codex",
   "version": "0.1.0-beta",
-  "description": "A cross-platform randomizer item tracker built on React and Electron.",
+  "description": "A minimal, cross-platform item tracker for randomized games.",
   "author": "Michael Irigoyen <goyney@gmail.com>",
   "license": "MIT",
   "repository": {
