@@ -118,7 +118,7 @@ function ALTTPItemTracker() {
       <Item levels={[{ component: <BombosMedallion/> }]} steps={['MM', 'TR', 'BOTH']} />
       <Item levels={[{ component: <EtherMedallion/> }]} steps={['MM', 'TR', 'BOTH']} />
       <Item levels={[{ component: <QuakeMedallion/> }]} steps={['MM', 'TR', 'BOTH']} />
-      <Item levels={[{ component: <GreenClothes/> }, { component: <BlueMail/> }, { component: <RedMail/> }]} startActive />
+      <Item alwaysActive levels={[{ component: <GreenClothes/> }, { component: <BlueMail/> }, { component: <RedMail/> }]} />
       <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('DP')} />
       <Item levels={[{ component: <Lantern/> }]} />
       <Item levels={[{ component: <Hammer/> }]} />

@@ -8,16 +8,16 @@ import { mdiCheckBold } from '@mdi/js';
 import classes from './ItemTracker.module.scss';
 
 function Item({
+  alwaysActive = false,
   changeLevelWithRightClick = false,
   checkable = false,
   className,
   displayLevel,
   levels = [],
   levelsStartValue = 1,
-  startActive = false,
   steps = []
 }) {
-  const [ itemActive, setItemActive ] = useState(startActive);
+  const [ itemActive, setItemActive ] = useState(alwaysActive);
   const [ itemLevel, setItemLevel ] = useState(0);
   const [ itemChecked, setItemChecked ] = useState(false);
   const [ itemStep, setItemStep ] = useState(0);
@@ -36,7 +36,7 @@ function Item({
     if (itemLevel === levels.length - 1) {
       setItemLevel(0);
 
-      if (allowEnabling) {
+      if (allowEnabling && !alwaysActive) {
         setItemActive(false);
       }
       return;
@@ -53,7 +53,12 @@ function Item({
     }
 
     if (itemLevel === 0) {
-      setItemActive(false);
+      if (!alwaysActive) {
+        setItemActive(false);
+        return;
+      }
+
+      setItemLevel(levels.length - 1);
       return;
     }
 
@@ -127,13 +132,13 @@ function Item({
 };
 
 Item.propTypes = {
+  alwaysActive: PropTypes.bool,
   changeLevelWithRightClick: PropTypes.bool,
   checkable: PropTypes.bool,
   className: PropTypes.string,
   displayLevel: PropTypes.oneOf(['always', 'enabled']),
   levels: PropTypes.array.isRequired,
   levelsStartValue: PropTypes.number,
-  startActive: PropTypes.bool,
   steps: PropTypes.array
 };
 
