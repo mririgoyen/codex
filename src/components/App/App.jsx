@@ -39,7 +39,12 @@ function App() {
           onChange={e => setSelectedGame(e.target.value)}
           value={selectedGame}
         >
-          <MenuItem value='alttp'>
+          <MenuItem
+            classes={{
+              root: classes.menuItem
+            }}
+            value='alttp'
+          >
             <ALTTPImage className={classes.gameSvg} />
             <p>A Link to the Past</p>
           </MenuItem>
