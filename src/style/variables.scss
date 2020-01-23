@@ -8,3 +8,10 @@ $red: rgb(205, 55, 61);
 
 $error: $red;
 $info: $banana;
+
+$icon-size: 50;
+
+@mixin text-outline {
+  color: $white;
+  text-shadow: -2px -2px 0 $black, 0 -2px 0 $black, 2px -2px 0 $black, 2px 0 0 $black, 2px 2px 0 $black, 0 2px 0 $black, -2px 2px 0 $black, -2px 0 0 $black;
+}

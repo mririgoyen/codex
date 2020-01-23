@@ -2,17 +2,17 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem .75rem;
+  padding: .5rem;
   user-select: none;
 }
 
 .item {
   height: 100%;
   max: {
-    height: 64px;
-    width: 64px;
+    height: $icon-size + px;
+    width: $icon-size + px;
   }
-  padding: 0 .25rem;
+  padding: .1rem;
   position: relative;
   width: 100%;
 }
@@ -21,6 +21,12 @@
   & > :not(.modifiers) {
     filter: grayscale(100%);
     opacity: .5;
+  }
+}
+
+.hide-level {
+  .item-level {
+    display: none;
   }
 }
 
@@ -37,11 +43,10 @@
 
 .item-level,
 .item-step {
-  color: $white;
+  @include text-outline;
   font-size: 1.5rem;
   pointer-events: none;
   position: absolute;
-  text-shadow: -2px -2px 0 $black, 0 -2px 0 $black, 2px -2px 0 $black, 2px 0 0 $black, 2px 2px 0 $black, 0 2px 0 $black, -2px 2px 0 $black, -2px 0 0 $black;
 }
 
 .item-step {

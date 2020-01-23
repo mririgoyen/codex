@@ -1,11 +1,11 @@
 .boomerang,
 .magical-boomerang {
-  max-width: 32px;
+  max-width: ($icon-size / 2) + px;
   overflow: hidden;
 
   svg {
-    margin-left: -32px;
-    padding-left: 16px;
+    margin-left: -($icon-size / 2) + px;
+    padding-left: ($icon-size / 4) + px;
   }
 }
 
@@ -19,7 +19,7 @@
 
 .agahnim-one,
 .agahnim-two {
-  max-width: 32px;
+  max-width: ($icon-size / 2) + px;
   overflow: hidden;
 }
 
@@ -27,7 +27,7 @@
   padding-right: 0;
 
   svg {
-    margin-right: -32px;
+    margin-right: -($icon-size / 2) + px;
   }
 }
 
@@ -35,7 +35,7 @@
   padding-left: 0;
 
   svg {
-    margin-left: -32px;
+    margin-left: -($icon-size / 2) + px;
   }
 }
 
@@ -45,4 +45,28 @@
   margin: 6px auto;
   position: absolute;
   right: 0;
+}
+
+.dungeon-reward {
+  p {
+    @include text-outline;
+    color: $white;
+    font-size: 1.6rem;
+    margin: 0;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .unknown-reward {
+    align-items: center;
+    display: flex;
+    height: (($icon-size / 2) + 2) + px;
+    justify-content: center;
+  }
+
+  svg {
+    margin-top: -8px;
+    max-height: ($icon-size - 10) + px;
+  }
 }

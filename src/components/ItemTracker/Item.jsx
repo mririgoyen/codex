@@ -7,39 +7,81 @@ import { mdiCheckBold } from '@mdi/js';
 
 import classes from './ItemTracker.module.scss';
 
-function Item({ checkable = false, className, levels = [], levelsStartValue = 1, startActive = false, steps = [] }) {
+function Item({
+  changeLevelWithRightClick = false,
+  checkable = false,
+  className,
+  displayLevel,
+  levels = [],
+  levelsStartValue = 1,
+  startActive = false,
+  steps = []
+}) {
+  const [ itemActive, setItemActive ] = useState(startActive);
   const [ itemLevel, setItemLevel ] = useState(0);
   const [ itemChecked, setItemChecked ] = useState(false);
   const [ itemStep, setItemStep ] = useState(0);
-
-  // Set initial greyscale level, unless `startActive` is set
-  if (!startActive && levels.length && !levels[0].greyscale) {
-    const inactiveState = Object.assign({}, levels[0]);
-    inactiveState.greyscale = true;
-    inactiveState.displayLevel = false;
-    levels.unshift(inactiveState);
-  }
 
   // Inject an initial unset step, if any steps are provided
   if (steps.length && steps[0] !== ' ') {
     steps.unshift(' ');
   }
 
-  const handleLeftClick = e => {
-    e.preventDefault();
+  const progressItemLevel = (allowEnabling = true) => {
+    if (!itemActive && allowEnabling) {
+      setItemActive(true);
+      return;
+    }
 
     if (itemLevel === levels.length - 1) {
       setItemLevel(0);
+
+      if (allowEnabling) {
+        setItemActive(false);
+      }
       return;
     }
 
     setItemLevel(itemLevel + 1);
   };
 
+  const regressItemLevel = () => {
+    if (!itemActive) {
+      setItemLevel(levels.length - 1);
+      setItemActive(true);
+      return;
+    }
+
+    if (itemLevel === 0) {
+      setItemActive(false);
+      return;
+    }
+
+    setItemLevel(itemLevel - 1);
+  };
+
+  const handleLeftClick = e => {
+    e.preventDefault();
+
+    // When right-clicking handles level changes, the
+    // left-click behavior simply toggles active state
+    if (changeLevelWithRightClick) {
+      setItemActive(!itemActive);
+      return;
+    }
+
+    progressItemLevel();
+  };
+
   const handleRightClick = e => {
     e.preventDefault();
 
-    // Right-click logic priority order: `steps`, `checkable`, reverse `level`
+    // Right-click logic priority order: `level` (when `changeLevelWithRightClick` is true), `steps`, `checkable`, reverse `level`
+    if (changeLevelWithRightClick) {
+      progressItemLevel(false);
+      return;
+    }
+
     if (steps.length) {
       if (itemStep === steps.length - 1) {
         setItemStep(0);
@@ -55,28 +97,21 @@ function Item({ checkable = false, className, levels = [], levelsStartValue = 1,
       return;
     }
 
-    if (itemLevel === 0) {
-      setItemLevel(levels.length - 1);
-    }
-    if (itemLevel > 0) {
-      setItemLevel(itemLevel - 1);
-    }
+    regressItemLevel();
   };
 
   const renderSteps = () => {
     if (!steps.length) {
       return;
     }
-
-    return (
-      <span className={classes.itemStep}>{steps[itemStep]}</span>
-    );
+    return <span className={classes.itemStep}>{steps[itemStep]}</span>;
   };
 
   return (
     <div
       className={cx(className, classes.item, {
-        [classes.greyscale]: levels[itemLevel].greyscale
+        [classes.greyscale]: !itemActive,
+        [classes.hideLevel]: displayLevel === 'enabled' && !itemActive
       })}
       onClick={handleLeftClick}
       onContextMenu={handleRightClick}
@@ -85,15 +120,17 @@ function Item({ checkable = false, className, levels = [], levelsStartValue = 1,
       <div className={classes.modifiers}>
         {renderSteps()}
         {itemChecked && <Icon className={classes.itemChecked} path={mdiCheckBold} />}
-        {levels[itemLevel].displayLevel && <span className={classes.itemLevel}>{levels[itemLevel].levelValue ? levels[itemLevel].levelValue : levelsStartValue + (itemLevel - 1)}</span>}
+        {!!displayLevel && <span className={classes.itemLevel}>{levels[itemLevel].levelValue ? levels[itemLevel].levelValue : levelsStartValue + itemLevel}</span>}
       </div>
     </div>
   );
 };
 
 Item.propTypes = {
+  changeLevelWithRightClick: PropTypes.bool,
   checkable: PropTypes.bool,
   className: PropTypes.string,
+  displayLevel: PropTypes.oneOf(['always', 'enabled']),
   levels: PropTypes.array.isRequired,
   levelsStartValue: PropTypes.number,
   startActive: PropTypes.bool,
