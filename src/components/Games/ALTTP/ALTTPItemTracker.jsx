@@ -140,9 +140,9 @@ function ALTTPItemTracker() {
       <Item levels={[{ component: <ZorasFlippers/> }]} />
       <Item levels={[{ component: <FightersSword/> }, { component: <MasterSwordLv1/> }, { component: <MasterSwordLv2/> }, { component: <MasterSwordLv3/> }]} />
       <Item levels={[{ component: <FightersShield/> }, { component: <RedShield/> }, { component: <MirrorShield/> }]} />
-      <Item displayLevel='always' levels={Array(8).fill({ component: <GanonTowerSign/> })} levelsStartValue={0} />
+      <Item displayLevel='enabled' levels={Array(8).fill({ component: <GanonTowerSign/> })} levelsStartValue={0} />
       <Item
-        displayLevel='always'
+        displayLevel='enabled'
         levels={
           Array(8)
             .fill({ component: <GanonSign/> })
