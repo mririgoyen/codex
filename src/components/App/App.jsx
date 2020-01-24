@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import uuid from 'uuid/v1';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
 import Icon from '@mdi/react';
-import { mdiBookOpenVariant } from '@mdi/js';
-
-import pkg from '../../../package.json';
+import { mdiBookOpenVariant, mdiRefresh } from '@mdi/js';
 
 import ItemTracker from '~/components/ItemTracker/ItemTracker';
 
@@ -22,13 +22,13 @@ function App() {
   };
   const theme = createMuiTheme(muiTheme);
 
+  const [ itemTrackerId, updateItemTrackerId ] = useState(uuid);
   const [ selectedGame, setSelectedGame ] = useState('alttp');
 
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.title}>
         <h1><Icon path={mdiBookOpenVariant} size={1} />Codex</h1>
-        <p>v{pkg.version}</p>
       </div>
       <div className={classes.gameSelector}>
         <Select
@@ -51,8 +51,14 @@ function App() {
             <p>A Link to the Past</p>
           </MenuItem>
         </Select>
+        <IconButton
+          className={classes.refresh}
+          onClick={() => updateItemTrackerId(uuid)}
+        >
+          <Icon path={mdiRefresh} size={1} />
+        </IconButton>
       </div>
-      <ItemTracker selectedGame={selectedGame} />
+      <ItemTracker key={itemTrackerId} selectedGame={selectedGame} />
     </MuiThemeProvider>
   );
 };

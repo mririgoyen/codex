@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD033 -->
 
 <div align="center">
-  <img alt="Codex" src="assets/banner.png" width="880">
+  <img alt="Codex" src="assets/github-banner.png" width="880">
 </div>
 
 # Codex

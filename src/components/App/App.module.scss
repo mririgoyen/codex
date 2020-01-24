@@ -8,22 +8,20 @@ body {
 }
 
 .title {
+  -webkit-app-region: drag; // sass-lint:disable-line no-vendor-prefixes
   align-items: center;
   background-color: lighten($darkblue, 10%);
   color: $white;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: .5rem;
-
-  h1,
-  p {
-    margin: 0;
-  }
+  user-select: none;
 
   h1 {
     align-items: center;
     display: flex;
     font-size: 16pt;
+    margin: 0;
 
     svg {
       fill: $white;
@@ -35,10 +33,12 @@ body {
 
 .game-selector {
   background-color: $darkblue;
+  display: flex;
   padding: 0 .5rem;
 
   .select {
     align-items: center;
+    background-color: transparent !important; // sass-lint:disable-line no-important
     color: $white;
     display: flex;
     padding: 0;
@@ -58,5 +58,11 @@ body {
 .menu-item {
   p {
     margin: 0;
+  }
+}
+
+.refresh {
+  svg {
+    fill: $white;
   }
 }
