@@ -7,7 +7,7 @@ const commonConfig = require('./common.webpack.config.js');
 module.exports = merge.smart(commonConfig, {
   entry: {
     app: [
-      path.resolve(__dirname, '../index.jsx')
+      path.resolve(__dirname, '../src/renderer/index.jsx')
     ]
   },
   mode: 'production',
@@ -31,7 +31,7 @@ module.exports = merge.smart(commonConfig, {
             loader: 'sass-resources-loader',
             options: {
               resources: [
-                path.resolve(__dirname, '../style/variables.scss')
+                path.resolve(__dirname, '../src/renderer/style/variables.scss')
               ]
             }
           }
@@ -55,7 +55,7 @@ module.exports = merge.smart(commonConfig, {
             loader: 'sass-resources-loader',
             options: {
               resources: [
-                path.resolve(__dirname, '../style/variables.scss')
+                path.resolve(__dirname, '../src/renderer/style/variables.scss')
               ]
             }
           }

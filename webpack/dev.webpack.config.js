@@ -6,18 +6,18 @@ const commonConfig = require('./common.webpack.config.js');
 
 module.exports = webpackMerge.smart(commonConfig, {
   devServer: {
-    contentBase: path.join(__dirname, '../../dist'),
+    contentBase: path.join(__dirname, '../dist'),
     disableHostCheck: true,
     hot: true,
     overlay: true,
-    port: 12820,
+    port: process.env.ELECTRON_WEBPACK_WDS_PORT,
     publicPath: '/'
   },
   devtool: 'cheap-module-eval-source-map',
   entry: {
     app: [
-      'webpack-dev-server/client?http://localhost:12828',
-      path.resolve(__dirname, '../index.jsx')
+      `webpack-dev-server/client?http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`,
+      path.resolve(__dirname, '../src/renderer/index.jsx')
     ]
   },
   mode: 'development',
@@ -47,7 +47,7 @@ module.exports = webpackMerge.smart(commonConfig, {
             loader: 'sass-resources-loader',
             options: {
               resources: [
-                path.resolve(__dirname, '../style/variables.scss')
+                path.resolve(__dirname, '../src/renderer/style/variables.scss')
               ]
             }
           }
@@ -69,7 +69,7 @@ module.exports = webpackMerge.smart(commonConfig, {
             loader: 'sass-resources-loader',
             options: {
               resources: [
-                path.resolve(__dirname, '../style/variables.scss')
+                path.resolve(__dirname, '../src/renderer/style/variables.scss')
               ]
             }
           }

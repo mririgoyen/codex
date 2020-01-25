@@ -37,11 +37,11 @@ module.exports = {
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve(__dirname, '../../dist')
+    path: path.resolve(__dirname, '../dist')
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../index.html'),
+      template: path.resolve(__dirname, '../src/renderer/index.html'),
       filename: 'index.html',
       inject: 'body'
     }),
@@ -52,8 +52,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      '~/assets': path.resolve(__dirname, '../assets'),
-      '~/components': path.resolve(__dirname, '../components')
+      '~/components': path.resolve(__dirname, '../src/renderer/components')
     },
     extensions: ['.js', '.jsx', '.json', '.scss'],
     symlinks: false

@@ -1,0 +1,2 @@
+renderer:
+  webpackConfig: "webpack/custom.webpack.additions.js"
