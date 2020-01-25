@@ -13,3 +13,5 @@ Under active development; more information coming soon.
 # License
 
 MIT
+
+Game trademarks and copyrights are properties of their respective owners.
