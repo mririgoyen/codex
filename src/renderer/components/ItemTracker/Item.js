@@ -5,7 +5,7 @@ import cx from 'classnames';
 import Icon from '@mdi/react';
 import { mdiCheckBold } from '@mdi/js';
 
-import classes from './ItemTracker.module.scss';
+import classes from './ItemTracker.scss';
 
 function Item({
   alwaysActive = false,

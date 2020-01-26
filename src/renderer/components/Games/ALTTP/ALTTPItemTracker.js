@@ -51,8 +51,8 @@ import SilverArrows from './assets/Silver Arrows.svg';
 import TitansMitt from './assets/Titans Mitt.svg';
 import ZorasFlippers from './assets/Zoras Flippers.svg';
 
-import classes from '~/components/ItemTracker/ItemTracker.module.scss';
-import alttpClasses from './ALTTPItemTracker.module.scss';
+import classes from '@/components/ItemTracker/ItemTracker.scss';
+import alttpClasses from './ALTTPItemTracker.scss';
 
 function ALTTPItemTracker() {
   // const APPLICATION_WIDTH = 389;

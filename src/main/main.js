@@ -7,11 +7,11 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 let mainWindow;
 
 function createMainWindow() {
-  const window = new BrowserWindow({
+  const windowConfig = {
     backgroundColor: '#141414',
     fullscreen: false,
     height: 430,
-    icon: 'assets/codex-icon.ico',
+    icon: 'build/icon.ico',
     maximizable: false,
     resizable: false,
     titleBarStyle: 'hidden',
@@ -19,7 +19,13 @@ function createMainWindow() {
       nodeIntegration: true
     },
     width: 389
-  });
+  };
+
+  if (isDevelopment) {
+    windowConfig.resizable = true;
+  }
+
+  const window = new BrowserWindow(windowConfig);
 
   if (isDevelopment) {
     window.webContents.openDevTools();
@@ -48,8 +54,6 @@ function createMainWindow() {
   return window;
 }
 
-app.dock.setIcon('assets/codex-icon.png');
-
 app.on('window-all-closed', () => {
   // On macOS, apps typically stay open until the user quits from the menu
   if (process.platform !== 'darwin') {
@@ -67,3 +71,7 @@ app.on('activate', () => {
 app.on('ready', () => {
   mainWindow = createMainWindow();
 });
+
+if (module.hot) {
+  module.hot.accept();
+}

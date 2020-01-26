@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ALTTPItemTracker from '~/components/Games/ALTTP/ALTTPItemTracker';
+import ALTTPItemTracker from '@/components/Games/ALTTP/ALTTPItemTracker';
 
 const AVAILABLE_GAMES = {
   alttp: ALTTPItemTracker

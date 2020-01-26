@@ -1,2 +1,3 @@
+title: "Codex"
 renderer:
-  webpackConfig: "webpack/custom.webpack.additions.js"
+  webpackConfig: "webpack/renderer.webpack.additions.js"

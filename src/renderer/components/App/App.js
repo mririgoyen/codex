@@ -7,10 +7,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Icon from '@mdi/react';
 import { mdiBookOpenVariant, mdiRefresh } from '@mdi/js';
 
-import ItemTracker from '~/components/ItemTracker/ItemTracker';
+import ItemTracker from '@/components/ItemTracker/ItemTracker';
 
-import ALTTPImage from '~/components/Games/ALTTP/assets/Agahnim.svg';
-import classes from './App.module.scss';
+import ALTTPImage from '@/components/Games/ALTTP/assets/Agahnim.svg';
+import classes from './App.scss';
+
+console.log('HERE', classes);
 
 function App() {
   const muiTheme = {
