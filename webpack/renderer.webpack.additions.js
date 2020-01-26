@@ -17,10 +17,7 @@ module.exports = config => {
   config.module.rules.find(e => e.test.toString().includes('svg')).test = /\.(png|jpe?g|gif)(\?.*)?$/;
   config.module.rules.push({
     test: /\.(svg)$/,
-    use: [
-      'babel-loader',
-      'react-svg-loader'
-    ]
+    use: [ 'react-svg-loader' ]
   });
 
   return config;

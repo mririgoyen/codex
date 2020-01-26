@@ -10,7 +10,7 @@ dmg:
     - x: 200
       y: 365
       type: file
-    - x: 450
+    - x: 457
       y: 365
       type: link
       path: "/Applications"
