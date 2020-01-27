@@ -20,14 +20,14 @@ function App() {
   const theme = createMuiTheme(muiTheme);
 
   const [ itemTrackerId, updateItemTrackerId ] = useState('initial');
-  const [ selectedTracker, setSelectedTracker ] = useState('0-0');
+  const [ selectedTracker, setSelectedTracker ] = useState('');
   const refAppBar = useRef();
   const itemTrackerRef = useRef();
 
   useEffect(() => {
     const titlebarHeight = refAppBar.current && refAppBar.current.clientHeight;
-    const trackerHeight = itemTrackerRef.current && itemTrackerRef.current.clientHeight;
-    const trackerWidth = itemTrackerRef.current && itemTrackerRef.current.clientWidth;
+    const trackerHeight = itemTrackerRef.current && itemTrackerRef.current.clientHeight || 0;
+    const trackerWidth = itemTrackerRef.current && itemTrackerRef.current.clientWidth || 0;
     ipcRenderer.send('resize-window', { height: trackerHeight + titlebarHeight, width: trackerWidth });
   }, [selectedTracker]);
 

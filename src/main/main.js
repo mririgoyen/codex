@@ -14,12 +14,13 @@ function createMainWindow() {
     icon: 'build/icon.ico',
     maximizable: false,
     minHeight: 300,
+    minWidth: 340,
     resizable: false,
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true
     },
-    width: 389
+    width: 340
   };
 
   const window = new BrowserWindow(windowConfig);

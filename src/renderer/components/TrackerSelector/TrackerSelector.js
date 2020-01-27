@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import uuid from 'uuid/v1';
 import Select from '@material-ui/core/Select';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -61,16 +62,23 @@ function TrackerSelector({ selectedTracker, setSelectedTracker, updateItemTracke
   };
 
   const renderValue = value => {
+    if (!value) {
+      return <p className={classes.selectTracker}>Select a Tracker</p>;
+    }
+
     const [ gameId, trackerId ] = value.split('-');
     const selectedGame = supportedGames[gameId].name;
     const SelectedGameSVG = supportedGames[gameId].image;
     const selectedTracker = supportedGames[gameId].trackers[trackerId].name;
 
     return (
-      <Fragment>
+      <div className={classes.selectedTracker}>
         <SelectedGameSVG className={classes.gameSvg} />
-        {selectedGame} - {selectedTracker}
-      </Fragment>
+        <div className={classes.gameInfo}>
+          <p className={classes.gameName}>{selectedGame}</p>
+          <p>{selectedTracker}</p>
+        </div>
+      </div>
     );
   };
 
@@ -81,8 +89,9 @@ function TrackerSelector({ selectedTracker, setSelectedTracker, updateItemTracke
           icon: classes.selectIcon,
           root: classes.select
         }}
-        disableUnderline={true}
-        fullWidth={true}
+        disableUnderline
+        displayEmpty
+        fullWidth
         onChange={e => {
           if (e.target.value) {
             setSelectedTracker(e.target.value);
@@ -94,7 +103,10 @@ function TrackerSelector({ selectedTracker, setSelectedTracker, updateItemTracke
         {generateOptions()}
       </Select>
       <IconButton
-        className={classes.refresh}
+        className={cx(classes.refresh, {
+          [classes.disabled]: !selectedTracker
+        })}
+        disabled={!selectedTracker}
         onClick={() => updateItemTrackerId(uuid)}
       >
         <Icon path={mdiRefresh} size={1} />
@@ -104,7 +116,7 @@ function TrackerSelector({ selectedTracker, setSelectedTracker, updateItemTracke
 };
 
 TrackerSelector.propTypes = {
-  selectedTracker: PropTypes.string.isRequired,
+  selectedTracker: PropTypes.string,
   setSelectedTracker: PropTypes.func.isRequired,
   updateItemTrackerId: PropTypes.func.isRequired
 };

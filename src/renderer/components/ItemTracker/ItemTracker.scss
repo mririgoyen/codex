@@ -1,3 +1,22 @@
+.welcome {
+  align-items: center;
+  color: darken($white, 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 209px;
+  user-select: none;
+
+  svg {
+    fill: darken($white, 50%);
+    margin-top: -25px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
 .grid {
   align-items: center;
   display: flex;

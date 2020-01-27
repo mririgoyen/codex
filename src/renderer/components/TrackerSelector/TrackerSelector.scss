@@ -1,6 +1,7 @@
 .game-selector {
   background-color: $darkblue;
   display: flex;
+  max-height: 48px;
   padding: 0 .5rem;
 
   .select {
@@ -16,10 +17,31 @@
   }
 }
 
+.select-tracker {
+  opacity: .5;
+}
+
+.selected-tracker {
+  align-items: center;
+  display: flex;
+}
+
 .game-svg {
   height: 24px;
-  padding-right: 6px;
+  padding-right: 10px;
   width: 24px;
+}
+
+.game-info {
+  p {
+    margin: 0;
+  }
+
+  .game-name {
+    color: darken($white, 25%);
+    font-size: .8rem;
+    text-transform: uppercase;
+  }
 }
 
 li {
@@ -47,5 +69,9 @@ li {
 .refresh {
   svg {
     fill: $white;
+  }
+
+  &.disabled {
+    opacity: .5;
   }
 }
