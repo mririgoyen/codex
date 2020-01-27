@@ -7,12 +7,13 @@ const AVAILABLE_GAMES = {
   alttp: ALTTPItemTracker
 };
 
-function ItemTracker({ selectedGame }) {
+function ItemTracker({ forwardRef, selectedGame }) {
   const SelectedGame = AVAILABLE_GAMES[selectedGame];
-  return <SelectedGame />;
+  return <SelectedGame forwardRef={forwardRef} />;
 };
 
 ItemTracker.propTypes = {
+  forwardRef: PropTypes.object.isRequired,
   selectedGame: PropTypes.oneOf(Object.keys(AVAILABLE_GAMES)).isRequired
 };
 

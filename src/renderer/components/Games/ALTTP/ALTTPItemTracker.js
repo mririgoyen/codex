@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 
@@ -54,9 +55,7 @@ import ZorasFlippers from './assets/Zoras Flippers.svg';
 import classes from '@/components/ItemTracker/ItemTracker.scss';
 import alttpClasses from './ALTTPItemTracker.scss';
 
-function ALTTPItemTracker() {
-  // const APPLICATION_WIDTH = 389;
-
+function ALTTPItemTracker({ forwardRef }) {
   const generateDungeon = (dungeon, type = 'reward') => {
     const dungeons = [
       { name: 'EP', smallKeys: 0, bigKey: true, pendant: true },
@@ -104,7 +103,7 @@ function ALTTPItemTracker() {
   };
 
   return (
-    <div className={classes.grid} onContextMenu={e => e.preventDefault()}>
+    <div className={classes.grid} onContextMenu={e => e.preventDefault()} ref={forwardRef}>
       <Item levels={[{ component: <Bow/> }, { component: <SilverArrows/> }]} />
       <Item className={alttpClasses.boomerang} levels={[{ component: <Boomerang/> }]} />
       <Item className={alttpClasses.magicalBoomerang} levels={[{ component: <MagicalBoomerang/> }]} />
@@ -162,6 +161,10 @@ function ALTTPItemTracker() {
       <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('TR')} />
     </div>
   );
+};
+
+ALTTPItemTracker.propTypes = {
+  forwardRef: PropTypes.object.isRequired
 };
 
 export default ALTTPItemTracker;

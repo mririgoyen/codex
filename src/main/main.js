@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import { format as formatUrl } from 'url';
 
@@ -10,7 +10,7 @@ function createMainWindow() {
   const windowConfig = {
     backgroundColor: '#141414',
     fullscreen: false,
-    height: 430,
+    height: 300,
     icon: 'build/icon.ico',
     maximizable: false,
     resizable: false,
@@ -21,14 +21,10 @@ function createMainWindow() {
     width: 389
   };
 
-  if (isDevelopment) {
-    windowConfig.resizable = true;
-  }
-
   const window = new BrowserWindow(windowConfig);
 
   if (isDevelopment) {
-    window.webContents.openDevTools();
+    window.webContents.openDevTools({ mode: 'detach' });
     window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
   }
 
@@ -49,6 +45,11 @@ function createMainWindow() {
     setImmediate(() => {
       window.focus();
     });
+  });
+
+  ipcMain.on('resize-window', (e, arg = {}) => {
+    const { height, width } = arg;
+    window.setSize(width, height, true);
   });
 
   return window;
