@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 
-import Item from '../../ItemTracker/Item';
+import Item from '@/components/ItemTracker/Item';
 
 import Agahnim from './assets/Agahnim.svg';
 import BlueCrystal from './assets/Blue Crystal.svg';
@@ -53,9 +53,9 @@ import TitansMitt from './assets/Titans Mitt.svg';
 import ZorasFlippers from './assets/Zoras Flippers.svg';
 
 import classes from '@/components/ItemTracker/ItemTracker.scss';
-import alttpClasses from './ALTTPItemTracker.scss';
+import alttpClasses from './ALTTP.scss';
 
-function ALTTPItemTracker({ forwardRef }) {
+function ItemTracker({ forwardRef }) {
   const generateDungeon = (dungeon, type = 'reward') => {
     const dungeons = [
       { name: 'EP', smallKeys: 0, bigKey: true, pendant: true },
@@ -163,8 +163,8 @@ function ALTTPItemTracker({ forwardRef }) {
   );
 };
 
-ALTTPItemTracker.propTypes = {
+ItemTracker.propTypes = {
   forwardRef: PropTypes.object.isRequired
 };
 
-export default ALTTPItemTracker;
+export default ItemTracker;

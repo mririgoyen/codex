@@ -1,0 +1,51 @@
+.game-selector {
+  background-color: $darkblue;
+  display: flex;
+  padding: 0 .5rem;
+
+  .select {
+    align-items: center;
+    background-color: transparent !important; // sass-lint:disable-line no-important
+    color: $white;
+    display: flex;
+    padding: 0;
+  }
+
+  .select-icon {
+    fill: $white;
+  }
+}
+
+.game-svg {
+  height: 24px;
+  padding-right: 6px;
+  width: 24px;
+}
+
+li {
+  &.sub-header {
+    align-items: center;
+    background-color: $darkblue;
+    color: $white;
+    display: flex;
+    line-height: initial;
+    padding: 5px 10px;
+    user-select: none;
+  }
+
+  &.menu-item {
+    line-height: initial;
+    min-height: 32px;
+
+    p {
+      margin: 0;
+      padding-left: 24px;
+    }
+  }
+}
+
+.refresh {
+  svg {
+    fill: $white;
+  }
+}

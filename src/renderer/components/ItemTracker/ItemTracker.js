@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ALTTPItemTracker from '@/components/Games/ALTTP/ALTTPItemTracker';
+import supportedGames from '@/components/Games/games';
 
-const AVAILABLE_GAMES = {
-  alttp: ALTTPItemTracker
-};
-
-function ItemTracker({ forwardRef, selectedGame }) {
-  const SelectedGame = AVAILABLE_GAMES[selectedGame];
+function ItemTracker({ forwardRef, selectedTracker }) {
+  const [ gameId, trackerId ] = selectedTracker.split('-');
+  const SelectedGame = supportedGames[gameId].trackers[trackerId].component;
   return <SelectedGame forwardRef={forwardRef} />;
 };
 
 ItemTracker.propTypes = {
   forwardRef: PropTypes.object.isRequired,
-  selectedGame: PropTypes.oneOf(Object.keys(AVAILABLE_GAMES)).isRequired
+  selectedTracker: PropTypes.string.isRequired
 };
 
 export default ItemTracker;

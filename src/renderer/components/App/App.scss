@@ -32,39 +32,3 @@ body {
     }
   }
 }
-
-.game-selector {
-  background-color: $darkblue;
-  display: flex;
-  padding: 0 .5rem;
-
-  .select {
-    align-items: center;
-    background-color: transparent !important; // sass-lint:disable-line no-important
-    color: $white;
-    display: flex;
-    padding: 0;
-  }
-
-  .select-icon {
-    fill: $white;
-  }
-}
-
-.game-svg {
-  height: 32px;
-  padding-right: .5rem;
-  width: 32px;
-}
-
-.menu-item {
-  p {
-    margin: 0;
-  }
-}
-
-.refresh {
-  svg {
-    fill: $white;
-  }
-}

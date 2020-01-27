@@ -13,6 +13,7 @@ function createMainWindow() {
     height: 300,
     icon: 'build/icon.ico',
     maximizable: false,
+    minHeight: 300,
     resizable: false,
     titleBarStyle: 'hidden',
     webPreferences: {
