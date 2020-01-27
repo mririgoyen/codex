@@ -56,6 +56,8 @@ import classes from '@/components/ItemTracker/ItemTracker.scss';
 import alttpClasses from './ALTTP.scss';
 
 function ItemTracker({ forwardRef }) {
+  const trackerWidth = 373;
+
   const generateDungeon = (dungeon, type = 'reward') => {
     const dungeons = [
       { name: 'EP', smallKeys: 0, bigKey: true, pendant: true },
@@ -103,7 +105,14 @@ function ItemTracker({ forwardRef }) {
   };
 
   return (
-    <div className={classes.grid} onContextMenu={e => e.preventDefault()} ref={forwardRef}>
+    <div
+      className={classes.grid}
+      onContextMenu={e => e.preventDefault()}
+      ref={forwardRef}
+      style={{
+        width: trackerWidth || 'auto'
+      }}
+    >
       <Item levels={[{ component: <Bow/> }, { component: <SilverArrows/> }]} />
       <Item className={alttpClasses.boomerang} levels={[{ component: <Boomerang/> }]} />
       <Item className={alttpClasses.magicalBoomerang} levels={[{ component: <MagicalBoomerang/> }]} />
