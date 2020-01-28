@@ -28,9 +28,9 @@ function App() {
   const errorContainerRef = useRef();
 
   useEffect(() => {
-    const titlebarHeight = refAppBar.current && refAppBar.current.clientHeight;
-    const trackerHeight = itemTrackerRef.current && itemTrackerRef.current.clientHeight || 0;
-    const trackerWidth = itemTrackerRef.current && itemTrackerRef.current.clientWidth || 0;
+    const titlebarHeight = refAppBar.current && refAppBar.current.clientHeight || 88;
+    const trackerHeight = itemTrackerRef.current && itemTrackerRef.current.clientHeight || 212;
+    const trackerWidth = itemTrackerRef.current && itemTrackerRef.current.clientWidth || 340;
     ipcRenderer.send('resize-window', { height: trackerHeight + titlebarHeight, width: trackerWidth });
   }, [selectedTracker]);
 

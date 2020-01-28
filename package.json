@@ -16,7 +16,7 @@
   "scripts": {
     "develop": "electron-webpack dev",
     "compile": "electron-webpack",
-    "dist": "yarn run compile && electron-builder",
+    "dist": "yarn run compile && electron-builder -m -w -l",
     "dist:dir": "yarn run dist --dir -c.compression=store -c.mac-identity=null"
   },
   "dependencies": {

@@ -3,6 +3,8 @@ import * as path from 'path';
 import { format as formatUrl } from 'url';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
+const minHeight = 300;
+const minWidth = 340;
 
 let mainWindow;
 
@@ -10,20 +12,22 @@ function createMainWindow() {
   const windowConfig = {
     backgroundColor: '#141414',
     fullscreen: false,
-    height: 300,
+    height: minHeight,
     icon: 'build/icon.ico',
     maximizable: false,
-    minHeight: 300,
-    minWidth: 340,
+    minHeight,
+    minWidth,
     resizable: false,
     titleBarStyle: 'hidden',
+    useContentSize: true,
     webPreferences: {
       nodeIntegration: true
     },
-    width: 340
+    width: minWidth
   };
 
   const window = new BrowserWindow(windowConfig);
+  window.setMenuBarVisibility(false);
 
   if (isDevelopment) {
     window.webContents.openDevTools({ mode: 'detach' });
@@ -50,8 +54,8 @@ function createMainWindow() {
   });
 
   ipcMain.on('resize-window', (e, arg = {}) => {
-    const { height, width } = arg;
-    window.setSize(width, height, true);
+    const { height = minHeight, width = minWidth } = arg;
+    window.setContentSize(Math.max(width, minWidth), Math.max(height, minHeight), true);
   });
 
   return window;

@@ -1,16 +1,30 @@
-appId: "com.electron.${name}"
 productName: "Codex"
+appId: "com.goyney.${name}"
 copyright: "Copyright © 2020 ${author}"
+
+asar: true
 
 mac:
   category: "public.app-category.games"
+  icon: "build/icon.icns"
 
 dmg:
   contents:
     - x: 200
       y: 365
-      type: file
     - x: 457
       y: 365
-      type: link
+      type: "link"
       path: "/Applications"
+
+win:
+  target: "portable"
+  icon: "build/icon.ico"
+
+nsis:
+  oneClick: true
+  perMachine: true
+
+linux:
+  target: "AppImage"
+  
