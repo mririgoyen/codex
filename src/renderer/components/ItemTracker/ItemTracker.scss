@@ -38,8 +38,7 @@
 
 .greyscale {
   & > :not(.modifiers) {
-    filter: grayscale(100%);
-    opacity: .5;
+    @include disabled-state;
   }
 }
 

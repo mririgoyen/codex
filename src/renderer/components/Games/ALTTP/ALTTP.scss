@@ -1,3 +1,21 @@
+.tracker {
+  width: 373px;
+}
+
+.keysanity-tracker {
+  display: flex;
+  width: 389px;
+}
+
+.keysanity-items {
+  width: 290px;
+}
+
+.keysanity-keys {
+  padding: .5rem .5rem .5rem 0;
+  width: 90px;
+}
+
 .boomerang,
 .magical-boomerang {
   max-width: ($icon-size / 2) + px;
@@ -68,5 +86,73 @@
   svg {
     margin-top: -8px;
     max-height: ($icon-size - 10) + px;
+  }
+}
+
+.dungeons {
+  display: flex;
+  height: (($icon-size / 2) - .5) + px;
+  user-select: none;
+
+  .dungeon-reward {
+    display: flex;
+    justify-content: space-between;
+    max-height: 17px;
+    min-width: 38px;
+    width: 38px;
+
+    p {
+      height: auto;
+    }
+  }
+}
+
+.dungeon-keysanity-reward {
+  display: flex;
+
+  p {
+    font-size: 1.1rem;
+    width: 20px;
+  }
+
+  .svg-container {
+    width: 20px;
+  }
+
+  svg {
+    margin: {
+      left: -3px;
+      top: -4px;
+    }
+    width: 26px;
+  }
+}
+
+.dungeon-small-keys {
+  min-width: 22px;
+  width: 22px;
+
+  p {
+    @include text-outline;
+    color: $white;
+    font-size: 1.1rem;
+    margin: 0;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
+}
+
+.big-key {
+  width: 22px;
+}
+
+.no-keys {
+  @include disabled-state;
+}
+
+.max-keys {
+  p {
+    color: $green;
   }
 }

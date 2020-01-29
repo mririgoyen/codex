@@ -11,6 +11,11 @@ $info: $banana;
 
 $icon-size: 50;
 
+@mixin disabled-state {
+  filter: grayscale(100%);
+  opacity: .5;
+}
+
 @mixin text-outline {
   color: $white;
   text-shadow: -2px -2px 0 $black, 0 -2px 0 $black, 2px -2px 0 $black, 2px 0 0 $black, 2px 2px 0 $black, 0 2px 0 $black, -2px 2px 0 $black, -2px 0 0 $black;

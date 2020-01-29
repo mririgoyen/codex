@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 
 import Item from '@/components/ItemTracker/Item';
+import generateDungeon from './generateDungeon';
 
 import Agahnim from './assets/Agahnim.svg';
-import BlueCrystal from './assets/Blue Crystal.svg';
 import BlueMail from './assets/Blue Mail.svg';
 import BombosMedallion from './assets/Bombos Medallion.svg';
 import Boomerang from './assets/Boomerang.svg';
@@ -23,7 +24,6 @@ import Flute from './assets/Flute.svg';
 import GanonSign from './assets/Ganon Sign.svg';
 import GanonTowerSign from './assets/Ganon Tower Sign.svg';
 import GreenClothes from './assets/Green Clothes.svg';
-import GreenPendant from './assets/Green Pendant.svg';
 import HalfMagic from './assets/Half Magic.svg';
 import Hammer from './assets/Hammer.svg';
 import Hookshot from './assets/Hookshot.svg';
@@ -43,8 +43,6 @@ import Mushroom from './assets/Mushroom.svg';
 import PegasusShoes from './assets/Pegasus Shoes.svg';
 import PowerGlove from './assets/Power Glove.svg';
 import QuakeMedallion from './assets/Quake Medallion.svg';
-import RedBluePendant from './assets/Red-Blue Pendant.svg';
-import RedCrystal from './assets/Red Crystal.svg';
 import RedMail from './assets/Red Mail.svg';
 import RedShield from './assets/Red Shield.svg';
 import Shovel from './assets/Shovel.svg';
@@ -56,62 +54,11 @@ import classes from '@/components/ItemTracker/ItemTracker.scss';
 import alttpClasses from './ALTTP.scss';
 
 function ItemTracker({ forwardRef }) {
-  const trackerWidth = 373;
-
-  const generateDungeon = (dungeon, type = 'reward') => {
-    const dungeons = [
-      { name: 'EP', smallKeys: 0, bigKey: true, pendant: true },
-      { name: 'DP', smallKeys: 1, bigKey: true, pendant: true },
-      { name: 'TH', smallKeys: 1, bigKey: true, pendant: true },
-      { name: 'HC', smallKeys: 1 },
-      { name: 'AT', smallKeys: 2 },
-      { name: 'PD', smallKeys: 6, bigKey: true, crystal: true },
-      { name: 'SP', smallKeys: 1, bigKey: true, crystal: true },
-      { name: 'SW', smallKeys: 3, bigKey: true, crystal: true },
-      { name: 'TT', smallKeys: 1, bigKey: true, crystal: true },
-      { name: 'IP', smallKeys: 2, bigKey: true, crystal: true },
-      { name: 'MM', smallKeys: 3, bigKey: true, crystal: true },
-      { name: 'TR', smallKeys: 4, bigKey: true, crystal: true },
-      { name: 'GT', smallKeys: 4, bigKey: true }
-    ];
-
-    const levels = [
-      <p className={alttpClasses.unknownReward} key='?'>?</p>,
-      <BlueCrystal key='blue-crystal' />,
-      <RedCrystal key='red-crystal' />,
-      <RedBluePendant key='red-blue-pendant' />,
-      <GreenPendant key='green-pendant' />
-    ];
-
-    const requestedDungeon = dungeons.find(e => e.name === dungeon);
-    if (!requestedDungeon) {
-      return;
-    }
-
-    if (type === 'keysanity') {
-      return;
-    }
-
-    return levels.map((e, i) => {
-      return ({
-        component: (
-          <div key={i}>
-            <p>{requestedDungeon.name}</p>
-            {e}
-          </div>
-        )
-      });
-    });
-  };
-
   return (
     <div
-      className={classes.grid}
+      className={cx(classes.grid, alttpClasses.tracker)}
       onContextMenu={e => e.preventDefault()}
       ref={forwardRef}
-      style={{
-        width: trackerWidth || 'auto'
-      }}
     >
       <Item levels={[{ component: <Bow/> }, { component: <SilverArrows/> }]} />
       <Item className={alttpClasses.boomerang} levels={[{ component: <Boomerang/> }]} />
@@ -120,21 +67,21 @@ function ItemTracker({ forwardRef }) {
       <Item checkable={true} levels={[{ component: <Mushroom/> }]} />
       <Item checkable={true} levels={[{ component: <MagicPowder/> }]} />
       <Item levels={[{ component: <HalfMagic/> }]} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('EP')} />
+      {generateDungeon('EP')}
       <Item levels={[{ component: <FireRod/> }]} />
       <Item levels={[{ component: <IceRod/> }]} />
       <Item levels={[{ component: <BombosMedallion/> }]} steps={['MM', 'TR', 'BOTH']} />
       <Item levels={[{ component: <EtherMedallion/> }]} steps={['MM', 'TR', 'BOTH']} />
       <Item levels={[{ component: <QuakeMedallion/> }]} steps={['MM', 'TR', 'BOTH']} />
       <Item alwaysActive levels={[{ component: <GreenClothes/> }, { component: <BlueMail/> }, { component: <RedMail/> }]} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('DP')} />
+      {generateDungeon('DP')}
       <Item levels={[{ component: <Lantern/> }]} />
       <Item levels={[{ component: <Hammer/> }]} />
       <Item checkable={true} levels={[{ component: <Flute/> }]} />
       <Item levels={[{ component: <BugCatchingNet/> }]} />
       <Item levels={[{ component: <BookOfMudora/> }]} />
       <Item checkable={true} levels={[{ component: <Shovel/> }]} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('TH')} />
+      {generateDungeon('TH')}
       <Item checkable={true} displayLevel='enabled' levels={Array(4).fill({ component: <Bottle/> })} />
       <Item levels={[{ component: <CaneOfSomaria/> }]} />
       <Item levels={[{ component: <CaneOfByma/> }]} />
@@ -161,13 +108,13 @@ function ItemTracker({ forwardRef }) {
         }
         levelsStartValue={0}
       />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('PD')} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('SP')} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('SW')} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('TT')} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('IP')} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('MM')} />
-      <Item changeLevelWithRightClick className={alttpClasses.dungeonReward} levels={generateDungeon('TR')} />
+      {generateDungeon('PD')}
+      {generateDungeon('SP')}
+      {generateDungeon('SW')}
+      {generateDungeon('TT')}
+      {generateDungeon('IP')}
+      {generateDungeon('MM')}
+      {generateDungeon('TR')}
     </div>
   );
 };

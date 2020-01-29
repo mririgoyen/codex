@@ -15,6 +15,7 @@ function Item({
   displayLevel,
   levels = [],
   levelsStartValue = 1,
+  loopLevels = true,
   steps = []
 }) {
   const [ itemActive, setItemActive ] = useState(alwaysActive);
@@ -34,10 +35,12 @@ function Item({
     }
 
     if (itemLevel === levels.length - 1) {
-      setItemLevel(0);
+      if (loopLevels) {
+        setItemLevel(0);
 
-      if (allowEnabling && !alwaysActive) {
-        setItemActive(false);
+        if (allowEnabling && !alwaysActive) {
+          setItemActive(false);
+        }
       }
       return;
     }
@@ -46,19 +49,21 @@ function Item({
   };
 
   const regressItemLevel = () => {
-    if (!itemActive) {
+    if (!itemActive && loopLevels) {
       setItemLevel(levels.length - 1);
       setItemActive(true);
       return;
     }
 
     if (itemLevel === 0) {
-      if (!alwaysActive) {
-        setItemActive(false);
-        return;
-      }
+      if (loopLevels) {
+        if (!alwaysActive) {
+          setItemActive(false);
+          return;
+        }
 
-      setItemLevel(levels.length - 1);
+        setItemLevel(levels.length - 1);
+      }
       return;
     }
 
@@ -139,6 +144,7 @@ Item.propTypes = {
   displayLevel: PropTypes.oneOf(['always', 'enabled']),
   levels: PropTypes.array.isRequired,
   levelsStartValue: PropTypes.number,
+  loopLevels: PropTypes.bool,
   steps: PropTypes.array
 };
 
