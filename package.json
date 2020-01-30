@@ -4,7 +4,7 @@
   "description": "A minimalistic, cross-platform item tracker for randomized games.",
   "author": "Michael Irigoyen <goyney@gmail.com>",
   "license": "MIT",
-  "main": "main.js",
+  "main": "src/main/main.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/goyney/codex.git"
@@ -15,9 +15,8 @@
   "homepage": "https://github.com/goyney/codex#readme",
   "scripts": {
     "develop": "electron-webpack dev",
-    "compile": "electron-webpack",
-    "dist": "yarn run compile && electron-builder -m -w -l",
-    "dist:dir": "yarn run dist --dir -c.compression=store -c.mac-identity=null",
+    "build": "electron-webpack",
+    "dist": "yarn run build && electron-builder -m -w -l",
     "test": "jest --config .jestrc.json"
   },
   "dependencies": {
