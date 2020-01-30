@@ -2,6 +2,7 @@
   "env": {
     "browser": true,
     "es6": true,
+    "jest": true,
     "node": true
   },
   "extends": [
@@ -12,6 +13,7 @@
     "sourceType": "module"
   },
   "plugins": [
+    "jest",
     "react-hooks"
   ],
   "rules": {
@@ -22,6 +24,18 @@
     "comma-spacing": [ 2, { "after": true } ],
     "curly": [ 2, "all" ],
     "indent": [ 2, 2, { "SwitchCase": 1, "ignoredNodes": ["TemplateLiteral"] } ],
+    "jest/no-focused-tests": 2,
+    "jest/no-identical-title": 2,
+    "jest/consistent-test-it": [
+      "error",
+      {
+        "fn": "it",
+        "withinDescribe": "it"
+      }
+    ],
+    "jest/no-jest-import": 2,
+    "jest/no-test-prefixes": 2,
+    "jest/no-test-return-statement": 2,
     "jsx-quotes": [ 2, "prefer-single" ],
     "key-spacing": [ 2, { "beforeColon": false, "afterColon": true } ],
     "keyword-spacing": [ 2, { "overrides": { "else": { "before": true } } } ],

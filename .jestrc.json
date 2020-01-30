@@ -1,0 +1,69 @@
+{
+  "collectCoverage": true,
+  "coverageDirectory": "coverage",
+  "coverageReporters": [
+    "text",
+    "html",
+    "json-summary"
+  ],
+  "collectCoverageFrom": [
+    "src/**/*.js"
+  ],
+  "projects": [
+    {
+      "displayName": "Tests",
+      "testEnvironment": "jsdom",
+      "testMatch": [
+        "<rootDir>/src/**/?(*.)test.js"
+      ],
+      "moduleDirectories": [
+        "node_modules",
+        "<rootDir>/src/main",
+        "<rootDir>/src/renderer"
+      ],
+      "moduleNameMapper": {
+        "\\.(css|scss|svg)$": "identity-obj-proxy",
+        "@(\/components\/.*)$": "<rootDir>/src/renderer/$1"
+      },
+      "setupFilesAfterEnv": [
+        "<rootDir>test/setupTests.js"
+      ]
+    },
+    {
+      "displayName": "ESLint",
+      "runner": "jest-runner-eslint",
+      "moduleFileExtensions": [
+        "js"
+      ],
+      "testMatch": [
+        "<rootDir>/src/**/*.js"
+      ],
+      "testPathIgnorePatterns": [
+        "/coverage/",
+        "/node_modules/",
+        "/dist/"
+      ],
+      "modulePathIgnorePatterns": [
+        "/dist/"
+      ]
+    },
+    {
+      "displayName": "Sass Lint",
+      "runner": "jest-runner-sasslint",
+      "moduleFileExtensions": [
+        "scss"
+      ],
+      "testMatch": [
+        "<rootDir>/src/**/*.scss"
+      ],
+      "testPathIgnorePatterns": [
+        "/coverage/",
+        "/node_modules/",
+        "/dist/"
+      ],
+      "modulePathIgnorePatterns": [
+        "/dist/"
+      ]
+    }
+  ]
+}

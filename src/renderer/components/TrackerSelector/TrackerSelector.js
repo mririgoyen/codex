@@ -13,7 +13,7 @@ import supportedGames from '@/components/Games/games';
 
 import classes from './TrackerSelector.scss';
 
-function TrackerSelector({ selectedTracker, setSelectedTracker, updateItemTrackerId }) {
+function TrackerSelector({ selectedTracker = '', setSelectedTracker, updateItemTrackerId }) {
   const generateOptions = () => {
     const allGames = supportedGames.filter(e => e.name && e.trackers && e.trackers.length);
 
