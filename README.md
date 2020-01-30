@@ -6,7 +6,7 @@
 
 # Codex
 
-Codex is a minimal, cross-platform item tracker for randomized games. Built on React and Electron, it allows gamers on any operating system the ability to enjoy their favorite randomized games with ease.
+Codex is a minimalistic, cross-platform item tracker for randomized games. Built on React and Electron, it allows gamers on any operating system the ability to enjoy their favorite randomized games with ease.
 
 Under active development; more information coming soon.
 
