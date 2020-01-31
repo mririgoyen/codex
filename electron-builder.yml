@@ -1,6 +1,6 @@
 productName: "Codex"
-appId: "com.goyney.${name}"
-copyright: "Copyright © 2020 ${author}"
+appId: "com.goyney.codex"
+copyright: "Copyright © 2020 Michael Irigoyen"
 
 asar: true
 
