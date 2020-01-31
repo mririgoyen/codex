@@ -12,17 +12,9 @@ Codex is a minimalistic, cross-platform item tracker for randomized games. Built
 
 Check the [releases tab](https://github.com/goyney/codex/releases) and download Codex for your operating system.
 
-## Windows
-
-The `exe` file will automatically install and launch Codex upon running it.
-
-## macOs
-
-Open the `dmg` file and drag Codex to your Applications folder.
-
-## Linux
-
-Make the `AppImage` file executable and run it.
+- **Windows**: The `exe` file will automatically install and launch Codex upon running it.
+- **macOS**: Open the `dmg` file and drag Codex to your Applications folder.
+- **Linux**: Make the `AppImage` file executable and run it.
 
 # Supported Games
 
