@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.1.1-beta (2020-01-30)
+## v0.1.2 (2020-01-30)
 
 - Fixed issue with reopening Codex on macOS.
 

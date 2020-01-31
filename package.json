@@ -1,6 +1,6 @@
 {
   "name": "codex",
-  "version": "0.1.1-beta",
+  "version": "0.1.2",
   "description": "A minimalistic, cross-platform item tracker for randomized games.",
   "author": "Michael Irigoyen <goyney@gmail.com>",
   "license": "MIT",
