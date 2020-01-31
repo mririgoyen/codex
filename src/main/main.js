@@ -53,13 +53,13 @@ function createMainWindow() {
     });
   });
 
-  ipcMain.on('resize-window', (e, arg = {}) => {
-    const { height = minHeight, width = minWidth } = arg;
-    window.setContentSize(Math.max(width, minWidth), Math.max(height, minHeight), true);
-  });
-
   return window;
 }
+
+ipcMain.on('resize-window', (e, arg = {}) => {
+  const { height = minHeight, width = minWidth } = arg;
+  mainWindow.setContentSize(Math.max(width, minWidth), Math.max(height, minHeight), true);
+});
 
 app.on('window-all-closed', () => {
   // On macOS, apps typically stay open until the user quits from the menu
