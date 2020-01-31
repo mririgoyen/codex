@@ -5,6 +5,7 @@ copyright: "Copyright © 2020 ${author}"
 asar: true
 
 mac:
+  target: "dmg"
   category: "public.app-category.games"
   icon: "build/icon.icns"
 
@@ -18,11 +19,9 @@ dmg:
       path: "/Applications"
 
 win:
-  target: "portable"
+  target: "nsis"
   icon: "build/icon.ico"
 
 linux:
-  target:
-    - "AppImage"
-    - "deb"
+  target: "AppImage"
   category: "Game"
