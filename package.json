@@ -2,17 +2,17 @@
   "name": "codex",
   "version": "0.1.3",
   "description": "A minimalistic, cross-platform item tracker for randomized games.",
-  "author": "Michael Irigoyen <goyney@gmail.com>",
+  "author": "Michael Irigoyen <michael@irigoyen.dev>",
   "license": "MIT",
   "main": "src/main/main.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/goyney/codex.git"
+    "url": "git+ssh://git@github.com/mririgoyen/codex.git"
   },
   "bugs": {
-    "url": "https://github.com/goyney/codex/issues"
+    "url": "https://github.com/mririgoyen/codex/issues"
   },
-  "homepage": "https://github.com/goyney/codex#readme",
+  "homepage": "https://github.com/mririgoyen/codex#readme",
   "scripts": {
     "develop": "electron-webpack dev",
     "build": "electron-webpack",
